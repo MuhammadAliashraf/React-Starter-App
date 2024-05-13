@@ -1,9 +1,12 @@
 import Footer from "components/Footer/Footer";
 import Navbar from "components/Navbar/Navbar";
+import UserPagesLayout from "components/UserPagesLayout/UserPagesLayout";
+import About from "pages/UserPages/About/About";
+import Contactus from "pages/UserPages/Contactus/Contactus";
 import Home from "pages/UserPages/Home/Home";
-import React from "react";
-import { Route, Router, Routes, useLocation } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import Login from "pages/UserPages/Login/Login";
+import Register from "pages/UserPages/Register/Register";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 // Define All Roles Routers in this File
 
@@ -11,12 +14,38 @@ function AppRouter() {
   const location = useLocation();
   return (
     <>
-      <ToastContainer />
-      <Navbar />
+      {!location.pathname.startsWith("/login") &&
+        !location.pathname.startsWith("/register") && <Navbar />}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path="/"
+          element={
+            <UserPagesLayout>
+              <Home />
+            </UserPagesLayout>
+          }
+        />
+        <Route
+          path="/contact-us"
+          element={
+            <UserPagesLayout>
+              <Contactus />
+            </UserPagesLayout>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <UserPagesLayout>
+              <About />
+            </UserPagesLayout>
+          }
+        />
       </Routes>
-      <Footer />
+      {!location.pathname.startsWith("/login") &&
+        !location.pathname.startsWith("/register") && <Footer />}
     </>
   );
 }

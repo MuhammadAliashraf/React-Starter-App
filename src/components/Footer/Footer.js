@@ -9,11 +9,11 @@ function Footer() {
   const INFORMATION = [
     {
       title: "About Us",
-      link: "#",
+      link: "/about",
     },
     {
       title: "Contact Us",
-      link: "#",
+      link: "/contact-us",
     },
     {
       title: "Manufactures",
@@ -51,12 +51,12 @@ function Footer() {
     },
   ];
   return (
-    <footer class="bg-[#2f333a] text-white">
+    <footer class="bg-gray-800 text-white">
       <div class=" w-11/12 mx-auto grid max-w-full gap-y-8 gap-x-12  py-10 md:grid-cols-2 xl:grid-cols-4">
         <div class="max-w-sm">
           <div class="mb-6 flex h-12 items-center space-x-2">
             <span class="text-2xl font-bold">
-              Logo-<span class="text-[#ff7004]">Here</span>.
+              Logo-<span class="text-orange-500">Here</span>.
             </span>
           </div>
           <div class="text-[14px]">
@@ -86,7 +86,7 @@ function Footer() {
               {INFORMATION?.map((item) => (
                 <li>
                   <Link
-                    class="hover:text-[#ff7004] hover:underline underline-offset-4"
+                    class="hover:text-orange-500 hover:underline underline-offset-4"
                     to={item?.link}
                   >
                     {item?.title}
@@ -103,7 +103,7 @@ function Footer() {
               {ACCOUNTS?.map((item) => (
                 <li>
                   <Link
-                    class="hover:text-[#ff7004] hover:underline underline-offset-4"
+                    class="hover:text-orange-500 hover:underline underline-offset-4"
                     to={item?.link}
                   >
                     {item?.title}

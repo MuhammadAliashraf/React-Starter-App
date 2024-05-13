@@ -1,23 +1,23 @@
-import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import Toast from "components/Toast/Toast";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Logo from "assets/logo.jpg";
+import Toast from "components/Toast/Toast";
+import { Fragment } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const navigation = [
-  { name: "Blogs", href: "/" },
+  { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Contact", href: "/contactus" },
+  { name: "Contact", href: "/contact-us" },
   { name: "Login", href: "/login" },
   { name: "Register", href: "/registration" },
 ];
 
 const loginUserNavigation = [
-  { name: "Blogs", href: "/" },
-  { name: "Add Blog", href: "/create-blog" },
-  { name: "My Blogs", href: "/my-blogs" },
-  { name: "Contact", href: "/contactus" },
+  { name: "Home", href: "/" },
+  // { name: "Add Blog", href: "/create-blog" },
+  // { name: "My Blogs", href: "/my-blogs" },
+  { name: "Contact", href: "/contact-us" },
   { name: "About", href: "/about" },
 ];
 
@@ -26,21 +26,23 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
-  const token = true;
+  const token = false;
   const location = useLocation();
   const navigate = useNavigate();
+
   const handleComingSoon = () => {
     Toast.warning("Coming Soon..");
   };
+  
   return (
-    <Disclosure as="nav" className="bg-[#2f333a]">
+    <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-20 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-white hover:text-orange-500">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
                   {open ? (
@@ -69,8 +71,8 @@ export default function Navbar() {
                           to={item.href}
                           className={classNames(
                             location.pathname === item.href
-                              ? "bg-white text-[#ff7004]"
-                              : "text-white transition ease-in-out duration-300 hover:bg-gray-100 hover:text-[#ff7004]",
+                              ? "bg-white text-orange-500"
+                              : "text-white transition ease-in-out duration-300 hover:bg-gray-100 hover:text-orange-500",
                             "rounded-md px-3 py-2 text-sm font-medium"
                           )}
                           aria-current={item.current ? "page" : undefined}
@@ -85,8 +87,8 @@ export default function Navbar() {
                           to={item.href}
                           className={classNames(
                             location.pathname === item.href
-                              ? "bg-white text-[#ff7004]"
-                              : "text-white transition ease-in-out duration-300 hover:bg-gray-100 hover:text-[#ff7004]",
+                              ? "bg-white text-orange-500"
+                              : "text-white transition ease-in-out duration-300 hover:bg-gray-100 hover:text-orange-500",
                             "rounded-md px-3 py-2 text-sm font-medium"
                           )}
                           aria-current={item.current ? "page" : undefined}
@@ -101,7 +103,7 @@ export default function Navbar() {
                 {/* Profile dropdown */}
                 {token && (
                   <>
-                    <p className="text-white underline">Welcome Jhon</p>
+                    <p className="text-white">Welcome Jhon</p>
                     <Menu as="div" className="relative ml-3">
                       <div>
                         <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
@@ -123,7 +125,7 @@ export default function Navbar() {
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                       >
-                        <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg">
                           <Menu.Item>
                             {({ active }) => (
                               <Link
@@ -143,7 +145,7 @@ export default function Navbar() {
                               <p
                                 onClick={() => {
                                   // dispatch(logoutUser());
-                                  navigate("/");
+                                  // navigate("/");
                                 }}
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
@@ -174,7 +176,7 @@ export default function Navbar() {
                     className={classNames(
                       item.current
                         ? "bg-gray-900 text-white"
-                        : "text-gray-300 hover:bg-white  hover:text-teal-800",
+                        : "text-gray-300 hover:bg-white  hover:text-orange-500",
                       "block rounded-md px-3 py-2 text-base font-medium"
                     )}
                     aria-current={item.current ? "page" : undefined}
@@ -191,7 +193,7 @@ export default function Navbar() {
                     className={classNames(
                       item.current
                         ? "bg-gray-900 text-white"
-                        : "text-gray-300 hover:bg-white  hover:text-teal-800",
+                        : "text-gray-300 hover:bg-white  hover:text-orange-500",
                       "block rounded-md px-3 py-2 text-base font-medium"
                     )}
                     aria-current={item.current ? "page" : undefined}
